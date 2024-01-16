@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+
+class Rectangle {
+    private:
+        double height;
+        double width;
+        std::string color;
+
+    public:
+        // Конструктори
+        Rectangle() : height(0), width(0), color("white") {}
+        Rectangle(double h, double w, std::string c) : height(h), width(w), color(c) {}
+
+        // Функції-члени обчислення площі, периметру
+        double area() { return height * width; }
+        double perimeter() { return 2 * (height + width); }
+
+        // Функції-члени встановлення висоти, ширини, кольору
+        void setHeight(double h) { if(h > 0) height = h; }
+        void setWidth(double w) { if(w > 0) width = w; }
+        void setColor(std::string c) { if(!c.empty()) color = c; }
+
+        // Функції-члени що повертають значення полів
+        double getHeight() { return height; }
+        double getWidth() { return width; }
+        std::string getColor() { return color; }
+
+        // Функція друку
+        void print() {
+            std::cout << "Прямокутник: висота = " << height << ", ширина = " << width << ", колір = " << color << std::endl;
+        }
+};
+
+int main() {
+    // Створення об'єкта
+    double height, width;
+    std::string color;
+    std::cout << "Введіть висоту см: ";
+    std::cin >> height;
+    std::cout << "Введіть ширину см: ";
+    std::cin >> width;
+    std::cout << "Введіть колір: ";
+    std::cin >> color;
+    Rectangle rect1(height, width, color);
+    rect1.print();
+
+    // Тестування всіх можливостей цього класу
+    std::cout << "Площа см2: " << rect1.area() << std::endl;
+    std::cout << "Периметр см: " << rect1.perimeter() << std::endl;
+
+    return 0;
+}
